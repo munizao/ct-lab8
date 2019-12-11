@@ -39,7 +39,7 @@ describe('event routes', () => {
     return request(app)
       .post('/api/v1/events')
       .send({
-        recipeId: recipe._id,
+        recipe: recipe._id,
         dateOfEvent: Date.now(),
         notes: 'It went well',
         rating: 4
@@ -47,7 +47,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: recipe._id.toString(),
+          recipe: recipe._id.toString(),
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
@@ -58,10 +58,10 @@ describe('event routes', () => {
 
   it('gets all events', async() => {
     const events = await Event.create([
-      { recipeId: recipe._id, dateOfEvent: Date.now(), rating: 3 },
-      { recipeId: recipe._id, dateOfEvent: Date.now(), rating: 2 },
-      { recipeId: recipe._id, dateOfEvent: Date.now(), rating: 3 },
-      { recipeId: recipe._id, dateOfEvent: Date.now(), rating: 5 },
+      { recipe: recipe._id, dateOfEvent: Date.now(), rating: 3 },
+      { recipe: recipe._id, dateOfEvent: Date.now(), rating: 2 },
+      { recipe: recipe._id, dateOfEvent: Date.now(), rating: 3 },
+      { recipe: recipe._id, dateOfEvent: Date.now(), rating: 5 },
     ]);
 
     return request(app)
@@ -75,7 +75,7 @@ describe('event routes', () => {
 
   it('gets an event by id', async() => {
     const event = await Event.create({
-      recipeId: recipe._id,
+      recipe: recipe._id,
       dateOfEvent: Date.now(),
       notes: 'It went well',
       rating: 4
@@ -86,7 +86,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: recipe._id.toString(),
+          recipe: recipe._id.toString(),
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
@@ -97,7 +97,7 @@ describe('event routes', () => {
 
   it('updates an event by id', async() => {
     const event = await Event.create({
-      recipeId: recipe._id,
+      recipe: recipe._id,
       dateOfEvent: Date.now(),
       notes: 'It went well',
       rating: 4
@@ -109,7 +109,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: recipe._id.toString(),
+          recipe: recipe._id.toString(),
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 5,
@@ -120,7 +120,7 @@ describe('event routes', () => {
 
   it('deletes an event by id', async() => {
     const event = await Event.create({
-      recipeId: recipe._id,
+      recipe: recipe._id,
       dateOfEvent: Date.now(),
       notes: 'It went well',
       rating: 4
@@ -131,7 +131,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipeId: recipe._id.toString(),
+          recipe: recipe._id.toString(),
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
