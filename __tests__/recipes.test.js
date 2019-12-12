@@ -95,12 +95,12 @@ describe('recipe routes', () => {
 
   it('gets recipes by ingredient', async() => {
     const flourRecipes = await Recipe.create([
-      { name: 'cookies', directions: [], ingredients: [{name:'flour', amount: 1, measurement: 'cup'}] },
-      { name: 'cake', directions: [], ingredients: [{name:'flour', amount: 1, measurement: 'cup'}] }
+      { name: 'cookies', directions: [], ingredients: [{ name:'flour', amount: 1, measurement: 'cup' }] },
+      { name: 'cake', directions: [], ingredients: [{ name:'flour', amount: 1, measurement: 'cup' }] }
     ]);
     await Recipe.create([
-      { name: 'fruit salad', directions: [], ingredients: [{name:'apples', amount: 1, measurement: 'cup'}] },
-      { name: 'mushroom soup', directions: [], ingredients: [{name:'mushrooms', amount: 1, measurement: 'cup'}] }
+      { name: 'fruit salad', directions: [], ingredients: [{ name:'apples', amount: 1, measurement: 'cup' }] },
+      { name: 'mushroom soup', directions: [], ingredients: [{ name:'mushrooms', amount: 1, measurement: 'cup' }] }
     ]);
     return request(app)
       .get('/api/v1/recipes?ingredient=flour')
