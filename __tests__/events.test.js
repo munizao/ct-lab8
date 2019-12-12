@@ -35,7 +35,6 @@ describe('event routes', () => {
   });
 
   it('creates an event', () => {
-    console.log(recipe);
     return request(app)
       .post('/api/v1/events')
       .send({
@@ -86,7 +85,7 @@ describe('event routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          recipe: recipe._id.toString(),
+          recipe: JSON.parse(JSON.stringify(recipe)),
           dateOfEvent: expect.any(String),
           notes: 'It went well',
           rating: 4,
